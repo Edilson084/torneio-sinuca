@@ -44,7 +44,7 @@ async function gerarPix() {
 function checarStatusPagamento(paymentId) {
     const intervalo = setInterval(async () => {
         try {
-            const resposta = await fetch(`http://localhost:3000/status-pagamento/${paymentId}`);
+            const resposta = await fetch(`https://torneio-sinuca-api.onrender.com/status-pagamento/${paymentId}`);
             const dados = await resposta.json();
 
             if (dados.status === "approved") {

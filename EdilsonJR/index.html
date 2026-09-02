@@ -97,35 +97,38 @@
 
     <!-- SCRIPT (Adicionado para controlar o carrossel e navegações) -->
     <script src="script.js"></script>
+    
     <!-- BOTÃO PARA ABRIR O MODAL -->
-<button id="btn-gerenciar" class="btn-primary">⚙️ Gerenciar Jogadores</button>
+    <button id="btn-gerenciar" class="btn-primary">⚙️ Gerenciar Jogadores</button>
 
-<!-- MODAL DE GERENCIAMENTO -->
-<div id="modal-gerenciar" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2>🎱 Painel de Jogadores (<span id="total-contagem">0</span>)</h2>
-            <span class="fechar-modal">&times;</span>
-        </div>
-        
-        <div class="tabela-responsive">
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nome</th>
-                        <th>Apelido</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody id="tabela-jogadores">
-                    <!-- Preenchido via JS -->
-                </tbody>
-            </table>
+    <!-- MODAL DE GERENCIAMENTO -->
+    <div id="modal-gerenciar" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🎱 Painel de Jogadores (<span id="total-contagem">0</span>)</h2>
+                <span class="fechar-modal">&times;</span>
+            </div>
+            
+            <div class="tabela-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nome</th>
+                            <th>Apelido</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-jogadores">
+                        <!-- Preenchido via JS -->
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
-    <script src="gerenciadorModal.js"></script>
+    
+    <!-- Corrigido para o nome exato do arquivo em minúsculo -->
+    <script src="gerenciadormodal.js"></script>
     
 </body>
 </html>
