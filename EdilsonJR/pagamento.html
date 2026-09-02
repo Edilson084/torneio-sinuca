@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento da Inscrição - Torneio de Sinuca</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .container-pagamento {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 24px;
+            background-color: #1e293b;
+            border-radius: 12px;
+            color: #f8fafc;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+        .form-group {
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
+        .form-group input {
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #475569;
+            background-color: #0f172a;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+        .btn-pix {
+            width: 100%;
+            padding: 12px;
+            background-color: #10b981;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-pix:hover {
+            background-color: #059669;
+        }
+        #area-qrcode {
+            margin-top: 24px;
+            text-align: center;
+        }
+        #area-qrcode textarea {
+            background-color: #0f172a;
+            color: #38edf8;
+            border: 1px solid #334155;
+            padding: 8px;
+            border-radius: 6px;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-pagamento">
+        <h2>Inscrição no Torneio de Sinuca</h2>
+        <p>Valor da Inscrição: <strong>R$ 100,00</strong></p>
+        <hr style="border-color: #334155; margin-bottom: 20px;">
+
+        <div class="form-group">
+            <label for="nome">Nome Completo do Jogador:</label>
+            <input type="text" id="nome" placeholder="Digite seu nome">
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail para confirmação:</label>
+            <input type="email" id="email" placeholder="seuemail@exemplo.com">
+        </div>
+
+        <button class="btn-pix" onclick="gerarPix()">Gerar QR Code Pix</button>
+
+        <div id="area-qrcode"></div>
+    </div>
+
+    <!-- Script de integração com o backend -->
+    <script src="pagamento.js"></script>
+</body>
+</html>

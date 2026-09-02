@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Faz o site se adaptar ao celular -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font Awesome - Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="cadastro.css">
+
+    <title>Cadastro - Torneio de Sinuca dos Amigos</title>
+</head>
+
+<body>
+
+    <div class="cadastro-container">
+
+        <div class="cadastro-box">
+
+            <h1>Cadastro</h1>
+
+            <form action="pagamento.html" method="GET" style="width: 100%;">
+
+                <!-- NOME COMPLETO -->
+                <div class="form-group">
+                    <label for="username">Nome Completo:</label>
+                    <input type="text" id="username" placeholder="Seu nome completo" required>
+                </div>
+                
+                <!-- COMO QUER SER CHAMADO -->
+                <div class="form-group">
+                    <label for="nickname">Como quer ser chamado:</label>
+                    <input type="text" id="nickname" placeholder="Seu nome ou apelido" required>
+                </div>
+                
+                <!-- CPF -->
+                <div class="form-group">
+                    <label for="cpf">CPF:</label>
+                    <input type="text" id="cpf" placeholder="Digite seu CPF" maxlength="14" inputmode="numeric" required>
+                </div>
+                
+                <!-- E-MAIL -->
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" placeholder="Seu e-mail" required>
+                </div>
+
+                <!-- SENHA -->
+                <div class="form-group">
+                    <label for="password">Senha:</label>
+                    <div class="password-box">
+                        <input type="password" id="password" placeholder="Digite sua senha" required>
+                        <button type="button" class="toggle-password" id="toggle-password">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CONFIRMAR SENHA -->
+                <div class="form-group">
+                    <label for="confirm-password">Confirme a Senha:</label>
+                    <div class="password-box">
+                        <input type="password" id="confirm-password" placeholder="Confirme sua senha" required>
+                        <button type="button" class="toggle-password" id="toggle-confirm-password">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- BOTÃO -->
+                <button type="submit" class="register-button">Cadastrar</button>
+
+                <div class="login-link">
+                    Já possui uma conta? <a href="login.html">Entrar</a>
+                </div>
+
+            </form>
+
+        </div>
+        
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="cadastro.js"></script>
+
+</body>
+
+</html>

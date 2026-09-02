@@ -1,0 +1,306 @@
+/* ============================= */
+/* CONFIGURAÇÕES GERAIS */
+/* ============================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: linear-gradient(135deg, #07111f, #102a43);
+
+    color: white;
+
+    min-height: 100vh;
+
+    padding: 40px;
+}
+
+
+/* ============================= */
+/* CONTAINER PRINCIPAL */
+/* ============================= */
+
+.container {
+    width: 100%;
+    max-width: 1800px;
+
+    margin: 0 auto;
+}
+
+
+/* ============================= */
+/* TÍTULO */
+/* ============================= */
+
+h1 {
+    text-align: center;
+
+    font-size: 42px;
+
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+
+    font-size: 20px;
+
+    opacity: 0.8;
+
+    margin-bottom: 35px;
+}
+
+
+/* ============================= */
+/* ÁREA DE CONTROLE */
+/* ============================= */
+
+.controls {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 35px;
+
+    padding: 20px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 15px;
+}
+
+.controls p {
+    font-size: 20px;
+}
+
+
+/* ============================= */
+/* BOTÃO DE SORTEIO */
+/* ============================= */
+
+#btn-sortear {
+    border: none;
+
+    padding: 15px 28px;
+
+    border-radius: 30px;
+
+    background: #e0a800;
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+#btn-sortear:hover {
+    transform: scale(1.05);
+
+    background: #ffc107;
+}
+
+
+/* ============================= */
+/* QUADRO */
+/* ============================= */
+
+.bracket {
+    display: flex;
+
+    gap: 25px;
+
+    align-items: flex-start;
+
+    overflow-x: auto;
+
+    padding-bottom: 30px;
+}
+
+
+/* ============================= */
+/* CADA FASE */
+/* ============================= */
+
+.fase {
+    min-width: 260px;
+
+    flex: 1;
+}
+
+.fase h2 {
+    text-align: center;
+
+    font-size: 20px;
+
+    margin-bottom: 20px;
+
+    padding: 12px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border-radius: 10px;
+}
+
+
+/* ============================= */
+/* CONFRONTOS */
+/* ============================= */
+
+.confrontos {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+
+/* ============================= */
+/* CARD DO CONFRONTO */
+/* ============================= */
+
+.confronto {
+    background: rgba(0, 0, 0, 0.45);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ============================= */
+/* JOGADORES */
+/* ============================= */
+
+.jogador {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 13px 15px;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    font-size: 16px;
+}
+
+.jogador:last-child {
+    border-bottom: none;
+}
+
+
+/* ============================= */
+/* NOME DO JOGADOR */
+/* ============================= */
+
+.nome-jogador {
+    font-weight: bold;
+}
+
+
+/* ============================= */
+/* BOTÃO VENCEDOR */
+/* ============================= */
+
+.btn-vencedor {
+    border: none;
+
+    padding: 5px 8px;
+
+    border-radius: 6px;
+
+    background: #198754;
+
+    color: white;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.btn-vencedor:hover {
+    background: #20c997;
+}
+
+
+/* ============================= */
+/* CAMPEÃO */
+/* ============================= */
+
+.campeao {
+    min-width: 220px;
+
+    text-align: center;
+
+    padding: 20px;
+
+    background: rgba(255, 193, 7, 0.12);
+
+    border: 1px solid rgba(255, 193, 7, 0.4);
+
+    border-radius: 15px;
+}
+
+.campeao h2 {
+    margin-bottom: 15px;
+}
+
+#campeao {
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+
+/* ============================= */
+/* RESPONSIVIDADE */
+/* ============================= */
+
+@media (max-width: 800px) {
+
+    body {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .controls {
+        flex-direction: column;
+
+        gap: 20px;
+
+        text-align: center;
+    }
+
+    .bracket {
+        flex-direction: column;
+    }
+
+    .fase {
+        width: 100%;
+    }
+}

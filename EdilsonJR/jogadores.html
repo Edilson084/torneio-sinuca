@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Jogadores</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="container">
+        <section class="card-gerenciamento">
+            <h2>🎱 Jogadores Cadastrados (<span id="total-contagem">0</span>)</h2>
+
+            <div class="tabela-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nome</th>
+                            <th>Apelido</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-jogadores">
+                        <!-- Preenchido dinamicamente via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="jogadores.js"></script>
+    
+</body>
+</html>

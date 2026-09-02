@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* FUNDO DA PÁGINA */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("Imagens/Fundo-login.jfif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+}
+
+/* CAIXA DO LOGIN (COMPACTADA) */
+.login-box {
+    width: 100%;
+    max-width: 360px; /* Reduzido de 500px para 360px */
+    padding: 25px 30px; /* Reduzido de 35px */
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+/* TÍTULO */
+.login-box h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px; /* Reduzido de 38px */
+}
+
+/* CAMPOS DE ENTRADA */
+.input-box {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px; /* Reduzido de 22px */
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px 40px 10px 15px; /* Reduzido para ficar mais compacto */
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    outline: none;
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+    font-size: 14px; /* Reduzido de 18px */
+}
+
+.input-box input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ÍCONES */
+.input-box i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 15px; /* Reduzido de 20px */
+}
+
+/* OPÇÕES (Lembrar de mim / Esqueceu a senha) */
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px; /* Reduzido de 30px */
+    margin-bottom: 20px;
+}
+
+.login-options a {
+    color: #38b6ff;
+    text-decoration: none;
+}
+
+.login-options a:hover {
+    text-decoration: underline;
+}
+
+/* BOTÃO DE SUBMIT */
+.login-button {
+    width: 100%;
+    padding: 12px; /* Reduzido de 18px */
+    border: none;
+    border-radius: 20px;
+    background-color: #00bf63; /* Verde padrão do site */
+    color: white;
+    font-size: 15px; /* Reduzido de 25px */
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.login-button:hover {
+    background-color: #00994f;
+}
+
+/* TEXTO DE CADASTRO */
+.register {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 13px; /* Reduzido de 35px */
+}
+
+.register a {
+    color: #38b6ff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.register a:hover {
+    text-decoration: underline;
+}
+
+/* CELULAR */
+@media (max-width: 600px) {
+    .login-box {
+        max-width: 320px;
+        padding: 20px;
+    }
+}

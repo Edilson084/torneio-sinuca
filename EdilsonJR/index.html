@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torneio de Sinuca dos Amigos</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- ICONES (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <!-- BLOCO PRINCIPAL -->
+    <div class="main-container">
+
+        <!-- LADO ESQUERDO / CONTEÚDO PRINCIPAL -->
+        <div class="hero-left">
+
+            <h1 class="title">Torneio de Sinuca dos Amigos</h1>
+
+            <!-- CARROSSEL -->
+            <div class="carousel">
+                <div class="carousel-track">
+                    <img src="Imagens/banner1.png" alt="Banner 1">
+                    <img src="Imagens/Banner2.jpg" alt="Banner 2">
+                </div>
+
+                <!-- BOTÕES DO CARROSSEL -->
+                <button class="carousel-btn prev">&#10094;</button>
+                <button class="carousel-btn next">&#10095;</button>
+            </div>
+
+            <!-- DESCRIÇÃO -->
+            <p class="description">
+                Jogue por diversão e com responsabilidade.
+            </p>
+
+            <p class="login-text">
+                Faça seu login ou cadastre-se para participar do torneio.
+            </p>
+
+            <!-- BOTÃO ENTRAR -->
+            <a href="login.html" class="btn-play">
+                ENTRAR
+                <i class="fa-solid fa-user"></i>
+            </a>
+            
+            <div class="register">
+                Não possui uma conta?
+                <!-- Corrigido para minúsculo conforme seu explorador -->
+                <a href="cadastro.html">Cadastre-se</a> 
+            </div>
+
+            <!-- LINKS DE NAVEGAÇÃO -->
+            <div class="content-split">
+                <ul class="links-list">
+                    <li>
+                        <!-- Corrigido para minúsculo -->
+                        <a href="informacoes.html#regras">&bull; Como Jogar - Regras &rsaquo;</a>
+                    </li>
+                    <li>
+                        <!-- Corrigido para minúsculo -->
+                        <a href="informacoes.html#ranking">&bull; Rankings &rsaquo;</a>
+                    </li>
+                    <li>
+                        <a href="classificacao.html">&bull; Quadro de Classificação &rsaquo;</a>
+                    </li>
+                    <li>
+                        <!-- Corrigido para minúsculo -->
+                        <a href="informacoes.html#dicas">&bull; Dicas e Estratégias &rsaquo;</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- INFORMAÇÕES (LOGOS ABAIXO DO BANNER) -->
+            <div class="info-rodape-banner">
+                <div>
+                    📍 <strong>Endereço:</strong> Estrada Jurumirim, MT-402 — Estrada Ponte de Ferro - Condomínio Shalom
+                </div>
+                <div style="margin-top: 4px;">
+                    📍 <strong>Link do Maps:</strong>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Estrada+Jurumirim+MT+402+Condominio+Shalom+Cuiaba"
+                        target="_blank" rel="noopener noreferrer" class="link-maps">
+                        Abrir no Google Maps ↗
+                    </a>
+                </div>
+                <div style="margin-top: 4px;">
+                    📞 <strong>Contato:</strong> (65) 99606-5270
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT (Adicionado para controlar o carrossel e navegações) -->
+    <script src="script.js"></script>
+    <!-- BOTÃO PARA ABRIR O MODAL -->
+<button id="btn-gerenciar" class="btn-primary">⚙️ Gerenciar Jogadores</button>
+
+<!-- MODAL DE GERENCIAMENTO -->
+<div id="modal-gerenciar" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>🎱 Painel de Jogadores (<span id="total-contagem">0</span>)</h2>
+            <span class="fechar-modal">&times;</span>
+        </div>
+        
+        <div class="tabela-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nome</th>
+                        <th>Apelido</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-jogadores">
+                    <!-- Preenchido via JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    <script src="gerenciadorModal.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,437 @@
+/* ==========================================================================
+   ESTILOS GERAIS DA PÁGINA
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #222222;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* CONTAINER PRINCIPAL */
+.main-container {
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   SEÇÃO DA ESQUERDA (HERO)
+   ========================================================================== */
+.hero-left {
+    flex: 2;
+    min-width: 320px;
+    background-color: #181818;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.title {
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 21px;
+    color: #e6bc02;
+    text-align: center;
+}
+
+.description {
+    font-size: 14px;
+    color: #aaaaaa;
+    margin-bottom: 20px;
+}
+
+/* BOTÃO VERDE DE LOGIN / JOGAR */
+.btn-play {
+    display: inline-block;
+    background-color: #00bf63;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 12px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background 0.2s;
+    margin-bottom: 15px;
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+.btn-play:hover {
+    background-color: #00994f;
+}
+
+.fa-solid.fa-user {
+    margin-left: 7px;
+    font-size: 15px;
+}
+
+.register {
+    margin-top: 7px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.register a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register a:hover {
+    text-decoration: underline;
+}
+
+/* CARROSSEL DE IMAGENS */
+.carousel {
+    width: 100%;
+    height: 335px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    background-color: #000000;
+}
+
+.carousel-track {
+    display: flex;
+    width: 200%;
+    height: 335px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-track img {
+    width: 50%;
+    height: 335px;
+    flex-shrink: 0;
+    object-fit: cover;
+    display: block;
+}
+
+/* ==========================================================================
+   LINKS E CONTEÚDO ADICIONAL
+   ========================================================================== */
+.content-split {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.links-list {
+    flex: 1;
+    min-width: 200px;
+    list-style: none;
+}
+
+.links-list li {
+    border-bottom: 1px solid #333333;
+    padding: 10px 0;
+}
+
+.links-list a {
+    color: #38b6ff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.links-list a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   SEÇÃO DA DIREITA (FORMULÁRIOS)
+   ========================================================================== */
+.hero-right {
+    flex: 1;
+    min-width: 280px;
+    background-color: #2b2b2b;
+    border-radius: 8px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-right h2 {
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.hero-right p {
+    font-size: 12px;
+    color: #aaaaaa;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 5px;
+    color: #cccccc;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    background-color: #3d3d3d;
+    border: 1px solid #555555;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.terms {
+    font-size: 11px;
+    color: #888888;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: #00bf63;
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.btn-submit:hover {
+    background-color: #00994f;
+}
+
+/* ==========================================================================
+   ESTILOS DAS CHAVES DO TORNEIO (classificacao.html)
+   ========================================================================== */
+.bracket {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 15px;
+}
+
+.fase {
+    min-width: 180px;
+    background-color: #2b2b2b;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.fase h2 {
+    font-size: 14px;
+    color: #e6bc02;
+    text-align: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+}
+
+.confronto {
+    background-color: #3d3d3d;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding: 6px;
+}
+
+.jogador {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.nome-jogador {
+    font-size: 13px;
+    color: #fff;
+}
+
+/* Botão do Admin para selecionar vencedor */
+.btn-vencedor {
+    background-color: #00bf63;
+    border: none;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-vencedor:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+/* Visual do Vencedor Selecionado */
+.vencedor-destaque {
+    background-color: rgba(0, 191, 99, 0.2);
+    border-radius: 3px;
+}
+
+.vencedor-destaque .nome-jogador {
+    color: #00bf63;
+    font-weight: bold;
+}
+.card-gerenciamento {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.tabela-responsive table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.tabela-responsive th, .tabela-responsive td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-acao {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.btn-editar { background: #ffc107; color: #000; }
+.btn-excluir { background: #dc3545; color: #fff; }
+/* ESTILOS DO MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: rgba(18, 26, 36, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 5% auto;
+    padding: 24px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 650px;
+    color: #fff;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.fechar-modal {
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.fechar-modal:hover { color: #fff; }
+
+.tabela-responsive table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela-responsive th, .tabela-responsive td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-acao {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 4px;
+    font-size: 0.85rem;
+}
+
+.btn-editar { background: #ffc107; color: #000; }
+.btn-excluir { background: #dc3545; color: #fff; }
+#btn-gerenciar {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f1f5f9;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: 999;
+}
+
+#btn-gerenciar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+    border-color: #eab308; /* Destaque em amarelo dourado ao passar o mouse */
+}
+.info-rodape-banner {
+    grid-column: 1 / -1; /* Força a ocupar todas as colunas do container */
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px 14px;
+    margin-top: 40px;
+    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 6px;
+    border-left: 3px solid #ffc107;
+    font-size: 0.78rem;
+    color: #94a3b8;
+}
+
+.info-rodape-banner strong {
+    color: #e2e8f0;
+}

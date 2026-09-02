@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações - Torneio de Sinuca</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            background-image: url("Imagens/Fundo-login.jfif");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+
+        /* ========================= */
+        /* FUNDO ESCURO              */
+        /* ========================= */
+
+        .page-overlay {
+            min-height: 100vh;
+            background: rgba(0, 0, 0, 0.65);
+            padding: 40px 20px;
+        }
+
+        /* ========================= */
+        /* CONTAINER PRINCIPAL       */
+        /* ========================= */
+
+        .info-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.70);
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            border-radius: 18px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+            padding: 40px;
+        }
+
+        /* ========================= */
+        /* TÍTULO                    */
+        /* ========================= */
+
+        .page-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: #cccccc;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        /* ========================= */
+        /* MENU DE NAVEGAÇÃO         */
+        /* ========================= */
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: white;
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            padding: 10px 16px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            background: rgba(255, 255, 255, 0.22);
+            transform: translateY(-2px);
+        }
+
+        /* ========================= */
+        /* SEÇÕES                    */
+        /* ========================= */
+
+        .info-section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+        }
+
+        .info-section h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            color: #38b6ff;
+        }
+
+        .info-section p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #dddddd;
+            margin-bottom: 15px;
+        }
+
+        /* ========================= */
+        /* LISTAS                    */
+        /* ========================= */
+
+        .info-section ul {
+            margin-left: 20px;
+            color: #dddddd;
+        }
+
+        .info-section li {
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        /* ========================= */
+        /* TABELA RANKING (PÓDIO)    */
+        /* ========================= */
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.12);
+            font-size: 15px;
+        }
+
+        td {
+            color: #dddddd;
+            font-size: 14px;
+        }
+
+        .podium-1 { color: #ffd700; font-weight: bold; } /* Ouro */
+        .podium-2 { color: #c0c0c0; font-weight: bold; } /* Prata */
+        .podium-3 { color: #cd7f32; font-weight: bold; } /* Bronze */
+
+        /* ========================= */
+        /* BOTÃO VER CLASSIFICAÇÃO   */
+        /* ========================= */
+
+        .btn-classificacao-link {
+            display: block;
+            text-align: center;
+            background: #00bf63;
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 15px;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-classificacao-link:hover {
+            background: #00994f;
+        }
+
+        /* ========================= */
+        /* BOTÃO VOLTAR              */
+        /* ========================= */
+
+        .back-button {
+            display: block;
+            width: fit-content;
+            margin: 20px auto 0;
+            padding: 12px 25px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        /* ========================= */
+        /* CELULAR                   */
+        /* ========================= */
+
+        @media (max-width: 600px) {
+            .page-overlay { padding: 15px 8px; }
+            .info-container { padding: 20px 12px; }
+            .page-title { font-size: 26px; }
+            .page-subtitle { font-size: 14px; }
+            .info-section { padding: 15px; }
+            .info-section h2 { font-size: 18px; }
+            .info-section p, .info-section li { font-size: 14px; }
+            .menu a { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-overlay">
+
+        <div class="info-container">
+
+            <!-- TÍTULO -->
+            <h1 class="page-title">Torneio de Sinuca</h1>
+            <p class="page-subtitle">Tudo o que você precisa saber para participar do torneio.</p>
+
+            <!-- MENU -->
+            <nav class="menu">
+                <a href="#regras">Como Jogar</a>
+                <a href="#ranking">Galeria de Campeões</a>
+                <a href="classificacao.html">Ver Classificação ›</a>
+                <a href="#dicas">Dicas e Estratégias</a>
+            </nav>
+
+            <!-- COMO JOGAR / REGRAS -->
+            <section class="info-section" id="regras">
+                <h2>🎱 Como Jogar</h2>
+                <p>O torneio será disputado entre os jogadores cadastrados. Antes de iniciar uma partida, confira seu adversário, horário e mesa definidos.</p>
+                
+                <ul>
+                    <li><strong>Objetivo do jogo:</strong> Encaçapar todas as bolas do seu grupo (Pares ou Ímpares) e finalizar a partida.</li>
+                    <li><strong>Saída:</strong> A partida começa com a tacada de saída atingindo a bola branca contra o bolo de bolas.</li>
+                    <li><strong>Definição do grupo:</strong> O grupo do jogador é definido pela primeira bola válida encaçapada após a saída.</li>
+                    <li><strong>Falta técnica:</strong> Tocar em qualquer bola com a mão, roupa ou corpo resulta em perda da vez. Reincidência concede 1 bola a menos para o adversário.</li>
+                    <li><strong>Falta de mira:</strong> Não atingir primeiro uma bola do seu próprio grupo concede 1 bola a menos para o adversário. Atingir diretamente a bola do adversário reduz 2 bolas dele.</li>
+                    <li><strong>Suicídio (Deu Branca):</strong> Encaçapar a bola branca é considerado falta e concede 1 bola a menos para o adversário.</li>
+                    <li><strong>Bola fora:</strong> Bola lançada para fora da mesa resulta em penalidade de 1 bola a menos para o adversário.</li>
+                    <li><strong>Reposição:</strong> Somente o Árbitro ou a Organização poderá repor ou mover bolas na mesa.</li>
+                    <li><strong>Respeito:</strong> Atitudes antidesportivas e desobediência às regras resultarão em eliminação.</li>
+                </ul>
+                <!-- ========================= -->
+<!-- REGRAS DO TORNEIO          -->
+<!-- ========================= -->
+
+<section class="info-section" id="regras">
+
+    <h2>🎱 Regras Gerais</h2>
+
+    <p>
+        O torneio será disputado entre os jogadores cadastrados na plataforma, 
+        seguindo as regras estabelecidas pela organização.
+    </p>
+
+    <p>
+        Antes de iniciar uma partida, os jogadores deverão conferir seus adversários, 
+        horário e mesa definidos para o confronto.
+    </p>
+
+    <ul>
+        <li>Cada jogador deve respeitar seu adversário.</li>
+        <li>A partida deverá seguir as regras oficiais determinadas pela organização.</li>
+        <li>O jogador deverá comparecer no horário estabelecido para sua partida.</li>
+        <li>Em caso de ausência, a organização poderá considerar a partida como W.O.</li>
+        <li>Discussões ou atitudes antidesportivas poderão resultar em punição ou eliminação.</li>
+        <li>As decisões da organização deverão ser respeitadas durante o torneio.</li>
+    </ul>
+
+</section>
+
+<section class="info-section" id="regras-partida">
+
+    <h2>🎱 Regras Durante a Partida</h2>
+
+    <ul>
+        <li>
+            <strong>Objetivo do jogo:</strong> 
+            Dividir as bolas em dois grupos após a saída e encaçapar corretamente todas as bolas do seu grupo.
+        </li>
+
+        <li>
+            <strong>Definição dos grupos:</strong> 
+            Os jogadores serão divididos entre os grupos de bolas definidos pela organização, como pares e ímpares.
+        </li>
+
+        <li>
+            <strong>Saída:</strong> 
+            A partida começa com o jogador realizando a tacada de saída, atingindo a bola branca contra o conjunto de bolas.
+        </li>
+
+        <li>
+            <strong>Definição do grupo:</strong> 
+            O grupo de cada jogador será definido de acordo com a primeira bola válida que for encaçapada após a saída.
+        </li>
+
+        <li>
+            <strong>Toque indevido ou falta técnica:</strong> 
+            Tocar ou mover indevidamente qualquer bola com a mão, braço, corpo, roupa ou qualquer parte do taco que não seja a sola durante a ação de jogo será considerado falta técnica (primeira vez: perda da vez; a partir da segunda: penalidade de 1 bola a menos para o adversário).
+        </li>
+
+        <li>
+            <strong>Saída com bolas dos dois grupos:</strong> 
+            Caso sejam encaçapadas bolas pertencentes aos dois grupos na saída, será concedida vantagem de uma segunda tacada ao jogador, porém sem o grupo de bolas definido.
+        </li>
+
+        <li>
+            <strong>Falta por não acertar a bola correta:</strong> 
+            Será considerada falta (1 bola a menos para o adversário) quando o jogador não atingir primeiro uma bola do seu próprio grupo. Atingir diretamente a bola do adversário é falta grave (2 bolas a menos para o adversário).
+        </li>
+
+        <li>
+            <strong>Bola branca na caçapa:</strong> 
+            Encaçapar a bola branca ("Suicídio" ou "Deu branca") será considerado falta, penalizado com 1 bola a menos para o adversário.
+        </li>
+
+        <li>
+            <strong>Falta por não atingir a bola alvo:</strong> 
+            Quando o jogador movimenta a bola branca com o taco, mas ela não encosta em nenhuma bola do seu grupo, haverá a penalidade de 1 bola a menos para o adversário.
+        </li>
+
+        <li>
+            <strong>Bola fora da mesa:</strong> 
+            Será considerada falta quando a bola branca ou uma bola colorida sair da superfície da mesa durante a jogada (penalidade de 1 bola a menos para o adversário).
+        </li>
+
+        <li>
+            <strong>Reposição das bolas:</strong> 
+            Somente o Árbitro ou a Organização do torneio poderá repor ou retirar as bolas na mesa, caso seja necessário.
+        </li>
+
+        <li>
+            <strong>Perda da vez:</strong> 
+            Após uma falta, o jogador poderá perder a vez, passando o direito de jogar ao adversário.
+        </li>
+
+        <li>
+            <strong>Punição por falta:</strong> 
+            Dependendo da situação, poderá haver retirada de bolas, concessão de vantagem ou outra penalidade previamente estabelecida.
+        </li>
+
+        <li>
+            <strong>Respeito aos adversários:</strong> 
+            Todos os jogadores deverão manter postura respeitosa e esportiva. Atitudes antidesportivas poderão resultar em advertência, punição ou eliminação.
+        </li>
+
+        <li>
+            <strong>Decisões da organização:</strong> 
+            Situações não previstas neste regulamento serão analisadas pela organização do torneio, cuja decisão deverá ser respeitada por todos.
+        </li>
+    </ul>
+            </section>
+
+            <!-- RANKING (GALERIA DE CAMPEÕES DO TORNEIO) -->
+            <section class="info-section" id="ranking">
+                <h2>🏆 Hall dos Campeões</h2>
+                <p>Confira os destaques do último campeonato finalizado:</p>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Jogador</th>
+                                <th>Apelido</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="podium-1">🥇 1º Lugar (Campeão)</td>
+                                <td>A definir</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td class="podium-2">🥈 2º Lugar (Vice)</td>
+                                <td>A definir</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td class="podium-3">🥉 3º Lugar</td>
+                                <td>A definir</td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- QUADRO DE CLASSIFICAÇÃO (REDIRECIONAMENTO) -->
+            <section class="info-section" id="classificacao">
+                <h2>📊 Quadro de Classificação</h2>
+                <p>Acompanhe em tempo real a pontuação, jogos, vitórias e derrotas de todos os participantes do campeonato atual.</p>
+                
+                <a href="classificacao.html" class="btn-classificacao-link">
+                    Acessar Tabela de Classificação Completa ›
+                </a>
+            </section>
+
+            <!-- DICAS -->
+            <section class="info-section" id="dicas">
+                <h2>🎯 Dicas e Estratégias</h2>
+                <ul>
+                    <li>Mantenha a calma e observe a mesa antes de cada tacada.</li>
+                    <li>Pense uma jogada à frente para posicionar a bola branca.</li>
+                    <li>Controle a força da tacada para evitar acidentes com a bola branca.</li>
+                </ul>
+            </section>
+
+            <!-- BOTÃO VOLTAR -->
+            <a href="index.html" class="back-button">
+                ← Voltar para a página inicial
+            </a>
+
+        </div>
+
+    </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const podioSalvo = JSON.parse(localStorage.getItem("podioTorneio"));
+
+        if (podioSalvo) {
+            const el1 = document.querySelector(".podium-1")?.parentElement;
+            const el2 = document.querySelector(".podium-2")?.parentElement;
+            const el3 = document.querySelector(".podium-3")?.parentElement;
+
+            if (el1) el1.children[1].textContent = podioSalvo.primeiro;
+            if (el2) el2.children[1].textContent = podioSalvo.segundo;
+            if (el3) el3.children[1].textContent = podioSalvo.terceiro;
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* ========================= */
+/* FUNDO DA PÁGINA           */
+/* ========================= */
+
+.cadastro-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("Imagens/Fundo-login.jfif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px 10px;
+}
+
+/* ========================= */
+/* CAIXA DO CADASTRO         */
+/* ========================= */
+
+.cadastro-box {
+    width: 100%;
+    max-width: 380px; /* Reduzido para encaixar bem em telas menores e PC */
+    padding: 25px 30px;
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+/* ========================= */
+/* TÍTULO                    */
+/* ========================= */
+
+.cadastro-box h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px; /* Proporcional ao Login */
+}
+
+/* ========================= */
+/* GRUPO DOS CAMPOS          */
+/* ========================= */
+
+.form-group {
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+/* ========================= */
+/* LABEL                     */
+/* ========================= */
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* ========================= */
+/* CAMPOS                    */
+/* ========================= */
+
+.form-group input {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    outline: none;
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+    font-size: 14px;
+}
+
+.form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.form-group input:focus {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.18);
+}
+
+/* ========================= */
+/* CAMPOS DE SENHA E ÍCONE   */
+/* ========================= */
+
+.password-box {
+    position: relative;
+    width: 100%;
+}
+
+.password-box input {
+    padding-right: 40px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 5px;
+    color: white;
+}
+
+.toggle-password:focus {
+    outline: none;
+}
+
+/* ========================= */
+/* BOTÃO CADASTRAR           */
+/* ========================= */
+
+.register-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: #00bf63; /* Verde padrão do botão */
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.register-button:hover {
+    background-color: #00994f;
+}
+
+/* ========================= */
+/* LINK PARA LOGIN           */
+/* ========================= */
+
+.login-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 13px;
+    color: white;
+}
+
+.login-link a {
+    color: #38b6ff;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 3px;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* ========================= */
+/* CELULAR                   */
+/* ========================= */
+
+@media (max-width: 600px) {
+    .cadastro-box {
+        max-width: 320px;
+        padding: 20px;
+    }
+}
