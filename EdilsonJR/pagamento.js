@@ -9,7 +9,7 @@ async function gerarPix() {
 
     try {
         // Envia os dados para o backend Node.js que está rodando na porta 3000
-        const resposta = await fetch("http://localhost:3000/criar-pix", {
+        const resposta = await fetch("https://torneio-sinuca-api.onrender.com", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
