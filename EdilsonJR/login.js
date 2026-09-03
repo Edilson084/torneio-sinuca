@@ -92,4 +92,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ==========================================
+    // 3. ALTERNÂNCIA DE VISIBILIDADE DA SENHA (CADEADO)
+    // ==========================================
+    const btnSenha = document.getElementById("btn-senha");
+    const inputSenha = document.getElementById("senha");
+
+    if (btnSenha && inputSenha) {
+        btnSenha.addEventListener("click", () => {
+            if (inputSenha.type === "password") {
+                inputSenha.type = "text";
+                btnSenha.classList.replace("fa-lock", "fa-unlock"); // Troca para o cadeado aberto
+            } else {
+                inputSenha.type = "password";
+                btnSenha.classList.replace("fa-unlock", "fa-lock"); // Volta para o cadeado fechado
+            }
+        });
+    }
 });

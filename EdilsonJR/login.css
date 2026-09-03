@@ -72,6 +72,9 @@ body {
     color: white;
     font-size: 15px; /* Reduzido de 20px */
 }
+.input-box i {
+    cursor: pointer;
+}
 
 /* OPÇÕES (Lembrar de mim / Esqueceu a senha) */
 .login-options {
