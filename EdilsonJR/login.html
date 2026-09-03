@@ -47,7 +47,17 @@
                     <a href="esquecisenha.html">Esqueceu a senha?</a>
 
                 </div>
-
+                <!-- Checkbox para ativar o modo Admin -->
+                <div class="admin-checkbox-container" style="margin: 10px 0; display: flex; align-items: center; gap: 8px;">
+                    <input type="checkbox" id="checkSouAdm" onchange="toggleAdminInput()">
+                    <label for="checkSouAdm" style="color: #ccc; font-size: 14px; cursor: pointer;">Sou Adm</label>
+                </div>
+                
+                <!-- Campo oculto que aparece ao marcar o checkbox -->
+                <div id="adminPinContainer" style="display: none; margin-bottom: 10px;">
+                    <input type="password" id="adminPin" placeholder="Digite o PIN de acesso" maxlength="4"
+                        style="width: 100%; padding: 8px; background: rgba(255,255,255,0.1); border: 1px solid #444; color: #fff; border-radius: 4px; text-align: center; letter-spacing: 3px;">
+                </div>
                 <!-- BOTÃO -->
                 <button type="submit" class="login-button">
                     Login

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Jogadores - Torneio de Sinuca</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="classificacao.css">
+    <style>
+        .gerenciar-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        th {
+            background: rgba(0, 0, 0, 0.2);
+            color: #f39c12;
+        }
+        .btn-acao {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 5px;
+            font-size: 12px;
+        }
+        .btn-editar { background: #3498db; color: #fff; }
+        .btn-excluir { background: #e74c3c; color: #fff; }
+        .btn-pagamento { background: #e67e22; color: #fff; }
+        .badge-pago {
+            background: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        .badge-pendente {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        .btn-voltar {
+            display: inline-block;
+            margin-bottom: 20px;
+            background: #444;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body style="padding: 20px;">
+
+    <a href="classificacao.html" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i> Voltar ao Chaveamento</a>
+
+    <div class="gerenciar-container">
+        <h2>Gerenciamento de Jogadores Inscritos</h2>
+        <p style="color: #aaa;">Visualize os participantes, corrija nomes, acompanhe e altere o status de pagamento.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome / Apelido</th>
+                    <th>E-mail / CPF</th>
+                    <th>Status Pagamento</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-jogadores">
+                <!-- Preenchido via JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="gerenciar.js"></script>
+</body>
+</html>

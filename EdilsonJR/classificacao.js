@@ -1,7 +1,9 @@
 // ===============================
 // ESTADO DO TORNEIO
 // ===============================
-let jogadores = JSON.parse(localStorage.getItem("jogadores")) || [];
+// DEPOIS (filtra apenas quem está com o pagamento aprovado/pago):
+let todosJogadores = JSON.parse(localStorage.getItem("jogadores")) || [];
+let jogadores = todosJogadores.filter(j => j.pago === true);
 
 let perdedoresSemifinal = [];
 let viceCampeao = "";
@@ -13,6 +15,14 @@ let terceiroLugar = "";
 const bracketContainer = document.querySelector(".bracket");
 const totalJogadores = document.getElementById("total-jogadores");
 const btnSortear = document.getElementById("btn-sortear");
+
+// ===============================
+// INICIALIZAÇÃO DA PÁGINA
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+    // Aplica o controle de permissão do Admin e esconde/mostra o botão de gerenciar
+    verificarAcessoNivel();
+});
 
 // ===============================
 // TRATAR NOME DOS JOGADORES
@@ -227,4 +237,29 @@ function exibirCampeao(nomeCampeao) {
 // ===============================
 if (btnSortear) {
     btnSortear.addEventListener("click", iniciarTorneio);
+}
+
+// ===============================
+// CONTROLE DE ACESSO (ADMIN)
+// ===============================
+function verificarAcessoNivel() {
+    const perfil = localStorage.getItem("usuario_perfil") || "jogador";
+    const badgeAdmin = document.getElementById("admin-badge");
+    const btnGerenciar = document.getElementById("btn-gerenciar");
+    const btnSortear = document.getElementById("btn-sortear"); // <-- Adicionado o elemento do botão sortear
+
+    // Mostra ou oculta o selo/badge de admin
+    if (badgeAdmin) {
+        badgeAdmin.style.display = (perfil === "admin") ? "block" : "none";
+    }
+
+    // Mostra o botão de gerenciar APENAS se for admin
+    if (btnGerenciar) {
+        btnGerenciar.style.display = (perfil === "admin") ? "block" : "none";
+    }
+
+    // Mostra o botão de Gerar/Resetar Chaveamento APENAS se for admin
+    if (btnSortear) {
+        btnSortear.style.display = (perfil === "admin") ? "block" : "none";
+    }
 }

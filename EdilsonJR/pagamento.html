@@ -25,7 +25,7 @@
             font-size: 0.9rem;
             color: #cbd5e1;
         }
-        .form-group input {
+        .form-group input, .form-group select {
             padding: 10px;
             border-radius: 6px;
             border: 1px solid #475569;
@@ -33,7 +33,7 @@
             color: #ffffff;
             font-size: 1rem;
         }
-        .btn-pix {
+        .btn-acao-pagamento {
             width: 100%;
             padding: 12px;
             background-color: #10b981;
@@ -44,8 +44,9 @@
             font-weight: bold;
             cursor: pointer;
             transition: background 0.2s;
+            margin-top: 10px;
         }
-        .btn-pix:hover {
+        .btn-acao-pagamento:hover {
             background-color: #059669;
         }
         #area-qrcode {
@@ -59,6 +60,7 @@
             padding: 8px;
             border-radius: 6px;
             resize: none;
+            width: 100%;
         }
     </style>
 </head>
@@ -70,16 +72,24 @@
         <hr style="border-color: #334155; margin-bottom: 20px;">
 
         <div class="form-group">
-            <label for="nome">Nome Completo do Jogador:</label>
-            <input type="text" id="nome" placeholder="Digite seu nome">
+            <label for="nome">Nome Completo / Apelido:</label>
+            <input type="text" id="nome" placeholder="Digite seu nome ou apelido">
         </div>
 
         <div class="form-group">
-            <label for="email">E-mail para confirmação:</label>
-            <input type="email" id="email" placeholder="seuemail@exemplo.com">
+            <label for="email">E-mail ou CPF:</label>
+            <input type="text" id="email" placeholder="seuemail@exemplo.com ou CPF">
         </div>
 
-        <button class="btn-pix" onclick="gerarPix()">Gerar QR Code Pix</button>
+        <div class="form-group">
+            <label for="forma-pagamento">Forma de Pagamento:</label>
+            <select id="forma-pagamento" onchange="alternarFormaPagamento()">
+                <option value="pix">Pix (Gerar QR Code)</option>
+                <option value="dinheiro">Dinheiro (Pagar à Organização)</option>
+            </select>
+        </div>
+
+        <button id="btn-processar" class="btn-acao-pagamento" onclick="processarPagamento()">Gerar QR Code Pix</button>
 
         <div id="area-qrcode"></div>
     </div>

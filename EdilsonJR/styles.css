@@ -119,6 +119,35 @@ body {
 }
 
 /* ==========================================================================
+   AJUSTE RESPONSIVO PARA O BANNER / CARROSSEL (CELULARES)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .carousel, 
+    .carousel-track {
+        height: 210px; /* Reduz a altura proporcionalmente em telas menores */
+    }
+
+    .carousel-track img {
+        height: 210px;
+        object-fit: contain; /* Garante que a imagem inteira apareça sem cortes nas bordas */
+        background-color: #000; /* Preenche eventuais espaços vazios laterais com preto */
+    }
+
+    .main-container {
+        padding: 10px;
+    }
+
+    .hero-left {
+        padding: 12px;
+        min-width: 100%;
+    }
+
+    .title {
+        font-size: 26px;
+    }
+}
+
+/* ==========================================================================
    LINKS E CONTEÚDO ADICIONAL
    ========================================================================== */
 .content-split {
@@ -324,6 +353,7 @@ body {
 
 .btn-editar { background: #ffc107; color: #000; }
 .btn-excluir { background: #dc3545; color: #fff; }
+
 /* ESTILOS DO MODAL */
 .modal {
     display: none;
@@ -367,29 +397,6 @@ body {
 
 .fechar-modal:hover { color: #fff; }
 
-.tabela-responsive table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.tabela-responsive th, .tabela-responsive td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.btn-acao {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-right: 4px;
-    font-size: 0.85rem;
-}
-
-.btn-editar { background: #ffc107; color: #000; }
-.btn-excluir { background: #dc3545; color: #fff; }
 #btn-gerenciar {
     position: fixed;
     bottom: 25px;
@@ -411,10 +418,11 @@ body {
 #btn-gerenciar:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
-    border-color: #eab308; /* Destaque em amarelo dourado ao passar o mouse */
+    border-color: #eab308;
 }
+
 .info-rodape-banner {
-    grid-column: 1 / -1; /* Força a ocupar todas as colunas do container */
+    grid-column: 1 / -1;
     width: 100%;
     box-sizing: border-box;
     display: flex;
