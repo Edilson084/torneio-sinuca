@@ -35,7 +35,7 @@
         }
 
         /* ========================= */
-        /* CONTAINER PRINCIPAL       */
+        /* CONTAINER PRINCIPAL      */
         /* ========================= */
 
         .info-container {
@@ -273,6 +273,22 @@
                     <li>Discussões ou atitudes antidesportivas poderão resultar em punição ou eliminação.</li>
                     <li>As decisões da organização deverão ser respeitadas durante o torneio.</li>
                 </ul>
+
+                <h3 style="color: #38b6ff; font-size: 18px; margin-top: 20px; margin-bottom: 10px;">🔄 Regras de Repescagem (1ª e 2ª Fase)</h3>
+                <p>
+                    Para garantir maior dinamismo e novas oportunidades aos participantes, o torneio conta com um sistema estruturado de repescagem dividido em duas etapas:
+                </p>
+                <ul>
+                    <li>
+                        <strong>Repescagem da 1ª Fase:</strong> Os jogadores eliminados logo na primeira rodada do torneio possuem uma nova chance de retornar à disputa. Essa oportunidade ocorre mediante taxa específica de inscrição na repescagem e prévia aprovação do administrador do torneio.
+                    </li>
+                    <li>
+                        <strong>Repescagem da 2ª Fase:</strong> Esta etapa é exclusiva e direcionada para os competidores que venceram seus confrontos na 1ª fase, mas acabam sofrendo derrota na 2ª fase. Há um limite estipulado de 4 vagas de retorno para esta categoria, todas devidamente autorizadas e gerenciadas pela administração.
+                    </li>
+                    <li>
+                        <strong>Reintegração:</strong> Os vencedores e classificados de ambas as seções de repescagem garantem o retorno oficial ao quadro principal do torneio a partir da 3ª fase.
+                    </li>
+                </ul>
             </section>
 
             <!-- REGRAS DURANTE A PARTIDA -->
@@ -361,20 +377,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr id="linha-1">
                                 <td class="podium-1">🥇 1º Lugar (Campeão)</td>
-                                <td>A definir</td>
-                                <td>-</td>
+                                <td class="nome-1">A definir</td>
+                                <td class="apelido-1">-</td>
                             </tr>
-                            <tr>
+                            <tr id="linha-2">
                                 <td class="podium-2">🥈 2º Lugar (Vice)</td>
-                                <td>A definir</td>
-                                <td>-</td>
+                                <td class="nome-2">A definir</td>
+                                <td class="apelido-2">-</td>
                             </tr>
-                            <tr>
+                            <tr id="linha-3">
                                 <td class="podium-3">🥉 3º Lugar</td>
-                                <td>A definir</td>
-                                <td>-</td>
+                                <td class="nome-3">A definir</td>
+                                <td class="apelido-3">-</td>
                             </tr>
                         </tbody>
                     </table>
@@ -416,13 +432,13 @@
             const podioSalvo = JSON.parse(localStorage.getItem("podioTorneio"));
 
             if (podioSalvo) {
-                const el1 = document.querySelector(".podium-1")?.parentElement;
-                const el2 = document.querySelector(".podium-2")?.parentElement;
-                const el3 = document.querySelector(".podium-3")?.parentElement;
+                const nome1 = document.querySelector(".nome-1");
+                const nome2 = document.querySelector(".nome-2");
+                const nome3 = document.querySelector(".nome-3");
 
-                if (el1) el1.children[1].textContent = podioSalvo.primeiro;
-                if (el2) el2.children[1].textContent = podioSalvo.segundo;
-                if (el3) el3.children[1].textContent = podioSalvo.terceiro;
+                if (nome1 && podioSalvo.primeiro) nome1.textContent = podioSalvo.primeiro;
+                if (nome2 && podioSalvo.segundo) nome2.textContent = podioSalvo.segundo;
+                if (nome3 && podioSalvo.terceiro) nome3.textContent = podioSalvo.terceiro;
             }
         });
     </script>

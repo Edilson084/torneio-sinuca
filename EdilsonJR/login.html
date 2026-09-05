@@ -33,7 +33,8 @@
                 <!-- SENHA -->
                 <div class="input-box">
                     <input type="password" id="senha" placeholder="Senha" required>
-                    <i class="fa-solid fa-lock"></i>
+                    <!-- Adicionado id="toggleSenha" e cursor pointer para indicar que é clicável -->
+                    <i class="fa-solid fa-lock" id="toggleSenha" style="cursor: pointer;" title="Mostrar/Ocultar senha"></i>
                 </div>
 
                 <!-- OPÇÕES -->
@@ -74,6 +75,26 @@
         </div>
 
     </div>
+
+    <!-- SCRIPT DO PÓDIO / MOSTRAR SENHA -->
+    <script>
+        const toggleSenha = document.getElementById('toggleSenha');
+        const inputSenha = document.getElementById('senha');
+
+        if (toggleSenha && inputSenha) {
+            toggleSenha.addEventListener('click', function () {
+                if (inputSenha.type === 'password') {
+                    inputSenha.type = 'text';
+                    toggleSenha.classList.remove('fa-lock');
+                    toggleSenha.classList.add('fa-unlock'); // Altera para o cadeado aberto
+                } else {
+                    inputSenha.type = 'password';
+                    toggleSenha.classList.remove('fa-unlock');
+                    toggleSenha.classList.add('fa-lock'); // Retorna para o cadeado fechado
+                }
+            });
+        }
+    </script>
 
     <!-- SCRIPT DE LOGIN -->
     <script src="login.js"></script>

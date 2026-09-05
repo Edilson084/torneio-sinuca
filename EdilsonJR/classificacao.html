@@ -54,6 +54,65 @@
 
     </div>
 
+    <!-- 1°SEÇÃO DE REPESCAGEM (SEGUNDA CHANCE) -->
+    <div class="repescagem-container" style="max-width: 1200px; margin: 40px auto; padding: 20px; background: #1a1a1a; border-radius: 10px; border: 2px dashed #f39c12; color: #fff;">
+        <h2 style="color: #f39c12; text-align: center;"><i class="fa-solid fa-rotate-right"></i> Chave de Repescagem (Segunda Chance)</h2>
+        <p class="repescagem-info" style="text-align: center; color: #ccc;">Exclusivo para eliminados da 1ª fase mediante taxa de R$ 50,00.</p>
+        
+        <!-- Lista de eliminados aptos a pedir a segunda chance -->
+        <div id="painel-eliminados-16avos" style="margin: 20px 0; background: #222; padding: 15px; border-radius: 8px;">
+            <h3 style="font-size: 16px; color: #fff; margin-bottom: 10px;">Eliminados da 1ª Fase (Clique no seu nome para solicitar a 2ª Chance):</h3>
+            <div id="lista-elegiveis-repescagem" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <!-- Preenchido via JS -->
+            </div>
+        </div>
+
+        <!-- Quadro de Chaves da Repescagem -->
+        <div class="quadro-repescagem" style="display: flex; gap: 20px; overflow-x: auto; padding-top: 15px;">
+            <div class="fase-coluna" style="flex: 1; min-width: 250px; background: #222; padding: 15px; border-radius: 8px;">
+                <h3 style="font-size: 15px; color: #f39c12; border-bottom: 1px solid #444; padding-bottom: 8px;">1ª Rodada (Repescagem)</h3>
+                <div id="rep-fase1" class="confrontos-lista"></div>
+            </div>
+            <div class="fase-coluna" style="flex: 1; min-width: 250px; background: #222; padding: 15px; border-radius: 8px;">
+                <h3 style="font-size: 15px; color: #f39c12; border-bottom: 1px solid #444; padding-bottom: 8px;">2ª Rodada (Repescagem)</h3>
+                <div id="rep-fase2" class="confrontos-lista"></div>
+            </div>
+        </div>
+
+        <!-- 2° SEÇÃO DE REPESCAGEM (SEGUNDA CHANCE) -->
+        <div class="painel-repescagem-2" style="margin-top: 25px; padding: 15px; background: #222; border-radius: 8px; border: 1px solid #444;">
+            <h3 style="color: #f39c12; margin-bottom: 10px; font-size: 16px;">2° SEÇÃO DE REPESCAGEM (SEGUNDA CHANCE)</h3>
+            <p style="color: #aaa; font-size: 13px; margin-bottom: 15px;">
+                Exclusivo para jogadores que ganharam na 1ª fase, mas foram derrotados na 2ª fase. (Máximo de 4 vagas).
+            </p>
+            <div id="lista-elegiveis-repescagem-2" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <!-- Preenchido via JavaScript -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MODAL DE PAGAMENTO PIX / SOLICITAÇÃO -->
+    <div id="modal-repescagem" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center;">
+        <div style="background:#222; padding:30px; border-radius:10px; width:90%; max-width:400px; text-align:center; color:#fff; border: 1px solid #f39c12;">
+            <h3 style="color:#f39c12; margin-bottom:15px;">Segunda Chance - Torneio</h3>
+            <p style="font-size:14px; color:#ccc; margin-bottom:15px;">Taxa de inscrição da repescagem: <strong style="color:#27ae60;">R$ 50,00</strong></p>
+            
+            <div style="background:#111; padding:15px; border-radius:8px; margin-bottom:15px;">
+                <p style="font-size:13px; margin-bottom:5px;">Pague via Pix (Chave / Copia e Cola):</p>
+                <code id="chave-pix-texto" style="background:#333; padding:5px 10px; display:block; word-break:break-all; font-size:12px; color:#f39c12; margin-bottom:10px;">db2252b0-7a02-4323-9acc-1948b0bc2d79</code>
+                <button onclick="copiarPix()" style="background:#333; color:#fff; border:none; padding:5px 10px; border-radius:4px; cursor:pointer; font-size:12px;"><i class="fa-solid fa-copy"></i> Copiar Chave Pix</button>
+            </div>
+
+            <p style="font-size:12px; color:#aaa; margin-bottom:20px;">Após realizar o pagamento via Pix ou em dinheiro com o organizador, clique em "Confirmar Pedido" para o Admin aprovar.</p>
+
+            <div style="display:flex; gap:10px; justify-content:center;">
+                <button id="btn-enviar-pedido" style="background:#27ae60; color:#fff; border:none; padding:10px 15px; border-radius:5px; cursor:pointer; font-weight:bold;">Solicitar Repescagem</button>
+                <button onclick="fecharModalRepescagem()" style="background:#c0392b; color:#fff; border:none; padding:10px 15px; border-radius:5px; cursor:pointer;">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
     <script src="classificacao.js"></script>
     <script>
         window.addEventListener('DOMContentLoaded', (event) => {
