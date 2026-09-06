@@ -39,8 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Lista de administradores autorizados
                 const administradoresPermitidos = [
                     { usuario: "EdilsonJr", senha: "123456", pin: "1409" },
-                    { usuario: "Admin2", senha: "senha123", pin: "2026" },
-                    { usuario: "Admin3", senha: "senha456", pin: "7890" }
+                    { usuario: "Adm2", senha: "123456", pin: "2026" },
+                    { usuario: "Adm3", senha: "123456", pin: "2027" }
                 ];
 
                 // Procura se existe um admin com esse usuário, senha e PIN correspondentes
