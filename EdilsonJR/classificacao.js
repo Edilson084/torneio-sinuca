@@ -44,18 +44,10 @@ function verificarAcessoNivel() {
     const perfil = localStorage.getItem("usuario_perfil");
 
     if (perfil !== "admin") {
-        // Ocultar botão Gerar / Resetar Chaveamento
+        // Ocultar botão Gerar / Resetar Chaveamento pelo ID
         if (btnSortear) {
             btnSortear.style.display = "none";
         }
-
-        // Ocultar botão Gerenciar Jogadores (buscando pelo link/botão no topo)
-        const botoesTopo = document.querySelectorAll("a, button");
-        botoesTopo.forEach(el => {
-            if (el.textContent.includes("Gerenciar Jogadores") || el.querySelector(".fa-users")) {
-                el.style.display = "none";
-            }
-        });
     }
 }
 
@@ -816,7 +808,7 @@ function criarElementoConfrontoRepescagem(nomeJogador, vencedorDoConfronto, indi
 }
 
 // ===============================
-// LÓGICA DA 2ª SEÇÃO DE REPESCAGEM (MÁXIMO 4 VAGAS)
+// LÓGICA DA 2ª SEÇÃO DE REPESCAGEM
 // ===============================
 function renderizarPainelRepescagem2() {
     const containerEl = document.getElementById("lista-elegiveis-repescagem-2");
@@ -824,5 +816,71 @@ function renderizarPainelRepescagem2() {
     containerEl.innerHTML = "";
 
     perdedoresSegundaFasePrincipal = JSON.parse(localStorage.getItem("torneio_perdedores_segunda_fase")) || [];
-    // Restante do painel mantido conforme a sua estrutura...
+    
+    if (perdedoresSegundaFasePrincipal.length === 0) {
+        containerEl.innerHTML = "<span style='color:#777; font-size:13px;'>Nenhum eliminado na 2ª fase registrado ainda.</span>";
+        return;
+    }
+
+    perdedoresSegundaFasePrincipal.forEach(jogador => {
+        let status = dadosRepescagem2.solicitacoes[jogador] || "nao_solicitado";
+        let badgeStyle = "background:#333; color:#fff; cursor:pointer;";
+        let textoBotao = jogador;
+
+        if (status === "pendente") {
+            badgeStyle = "background:#d35400; color:#fff; cursor:default;";
+            textoBotao = `${jogador} (Aguardando Aprovação)`;
+        } else if (status === "aprovado") {
+            badgeStyle = "background:#27ae60; color:#fff; cursor:default;";
+            textoBotao = `${jogador} (Aprovado ✓)`;
+        }
+
+        let tag = document.createElement("div");
+        tag.style = `padding: 8px 12px; border-radius: 6px; font-size: 13px; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; ${badgeStyle}`;
+        tag.innerText = textoBotao;
+
+        if (status === "nao_solicitado") {
+            tag.onclick = () => {
+                dadosRepescagem2.solicitacoes[jogador] = "pendente";
+                localStorage.setItem("torneio_repescagem_2", JSON.stringify(dadosRepescagem2));
+                alert("Solicitação enviada para a 2ª Repescagem!");
+                renderizarPainelRepescagem2();
+            };
+        }
+
+        const perfilUsuario = localStorage.getItem("usuario_perfil");
+        if (perfilUsuario === "admin" && status === "pendente") {
+            let btnAprovar = document.createElement("button");
+            btnAprovar.innerText = "Aprovar Vaga";
+            btnAprovar.style = "background:#27ae60; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; font-size:11px;";
+            btnAprovar.onclick = (e) => {
+                e.stopPropagation();
+                if ((dadosRepescagem2.vagasAprovadas || []).length >= 4) {
+                    alert("Limite máximo de 4 vagas já preenchido!");
+                    return;
+                }
+                dadosRepescagem2.solicitacoes[jogador] = "aprovado";
+                if (!dadosRepescagem2.vagasAprovadas.includes(jogador)) {
+                    dadosRepescagem2.vagasAprovadas.push(jogador);
+                }
+                localStorage.setItem("torneio_repescagem_2", JSON.stringify(dadosRepescagem2));
+                alert(`Jogador ${jogador} aprovado na 2ª Repescagem!`);
+                renderizarPainelRepescagem2();
+                rederizarNovamenteQuadroPrincipal();
+            };
+            tag.appendChild(btnAprovar);
+        }
+
+        containerEl.appendChild(tag);
+    });
+}
+function sairDaConta() {
+    if (confirm("Deseja realmente sair da sua conta?")) {
+        // Remove os dados de sessão do usuário
+        localStorage.removeItem("usuario_perfil");
+        localStorage.removeItem("usuario_logado");
+        
+        // Redireciona para o login
+        window.location.href = "login.html";
+    }
 }

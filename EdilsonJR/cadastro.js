@@ -1,5 +1,5 @@
 // ===============================
-// CADASTRO.JS
+// CADASTRO.JS (Atualizado e Blindado)
 // ===============================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -126,14 +126,14 @@ document.addEventListener("DOMContentLoaded", () => {
             let jogadores = JSON.parse(localStorage.getItem("jogadores")) || [];
             const cpfSemMascara = cpfValor.replace(/\D/g, "");
 
-            // CHECAR DUPLICADOS
-            if (jogadores.some(j => j.cpf === cpfSemMascara)) {
+            // CHECAR DUPLICADOS COM SEGURANÇA (BLINDADO CONTRA DADOS CORROMPIDOS)
+            if (jogadores.some(j => j && typeof j === 'object' && j.cpf === cpfSemMascara)) {
                 alert("Este CPF já está cadastrado.");
                 cpf.focus();
                 return;
             }
 
-            if (jogadores.some(j => j.email.toLowerCase() === emailValor.toLowerCase())) {
+            if (jogadores.some(j => j && typeof j === 'object' && j.email && j.email.toLowerCase() === emailValor.toLowerCase())) {
                 alert("Este e-mail já está cadastrado.");
                 email.focus();
                 return;
@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             alert("Cadastro realizado com sucesso! Redirecionando para o pagamento da taxa.");
 
-            // REDIRECIONAR PARA O PAGAMENTO (NOME EM MINÚSCULAS)
+            // REDIRECIONAR PARA O PAGAMENTO
             window.location.href = "pagamento.html";
         });
     }

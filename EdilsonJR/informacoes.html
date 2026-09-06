@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informações - Torneio de Sinuca</title>
+    <!-- Font Awesome - Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
         * {
@@ -29,9 +31,37 @@
         /* ========================= */
 
         .page-overlay {
+            position: relative; /* Necessário para alinhar elementos absolutos no topo */
             min-height: 100vh;
             background: rgba(0, 0, 0, 0.65);
             padding: 40px 20px;
+        }
+
+        /* ========================= */
+        /* BOTÃO DE SAIR            */
+        /* ========================= */
+
+        .btn-sair {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 10px 14px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        .btn-sair:hover {
+            background: rgba(255, 255, 255, 0.22);
+            transform: translateY(-2px);
         }
 
         /* ========================= */
@@ -224,7 +254,7 @@
         /* ========================= */
 
         @media (max-width: 600px) {
-            .page-overlay { padding: 15px 8px; }
+            .page-overlay { padding: 50px 8px 15px 8px; } /* Ajuste de espaço topo para o botão de sair mobile */
             .info-container { padding: 20px 12px; }
             .page-title { font-size: 26px; }
             .page-subtitle { font-size: 14px; }
@@ -232,6 +262,7 @@
             .info-section h2 { font-size: 18px; }
             .info-section p, .info-section li { font-size: 14px; }
             .menu a { width: 100%; text-align: center; }
+            .btn-sair { top: 10px; right: 10px; padding: 8px 12px; font-size: 12px; }
         }
     </style>
 </head>
@@ -239,6 +270,11 @@
 <body>
 
     <div class="page-overlay">
+
+        <!-- Botão de Sair (Canto superior direito) -->
+        <button id="btn-sair" class="btn-sair" onclick="sairDaConta()" title="Sair da conta">
+            <i class="fa-solid fa-right-from-bracket"></i> Sair
+        </button>
 
         <div class="info-container">
 
@@ -418,16 +454,26 @@
             </section>
 
             <!-- BOTÃO VOLTAR -->
-            <a href="index.html" class="back-button">
-                ← Voltar para a página inicial
+            <a href="classificacao.html" class="back-button">
+                ← Voltar para a Classificação
             </a>
 
         </div>
 
     </div>
 
-    <!-- SCRIPT DO PÓDIO -->
+    <!-- SCRIPTS -->
     <script>
+        // Função para sair da conta
+        function sairDaConta() {
+            if (confirm("Deseja realmente sair da sua conta?")) {
+                localStorage.removeItem("usuario_perfil");
+                localStorage.removeItem("usuario_logado");
+                window.location.href = "login.html";
+            }
+        }
+
+        // Script do Pódio
         document.addEventListener("DOMContentLoaded", () => {
             const podioSalvo = JSON.parse(localStorage.getItem("podioTorneio"));
 

@@ -10,22 +10,27 @@
 </head>
 <body style="position: relative; min-height: 100vh; margin: 0; padding-top: 20px;">
 
+    <!-- Botão de Sair (Canto superior direito extremo) -->
+    <button id="btn-sair" onclick="sairDaConta()" title="Sair da conta" style="position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 10px 14px; border-radius: 30px; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 14px; z-index: 1000;">
+        <i class="fa-solid fa-right-from-bracket"></i> Sair
+    </button>
+
     <!-- Botão de Regras -->
     <a href="informacoes.html" class="btn-regras"
         style="background: #222; color: #fff; padding: 10px 20px; border-radius: 20px; text-decoration: none; border: 1px solid #444; margin-left: 20px;">
         Regras / Como jogar
     </a>
 
-    <!-- Botão Flutuante de Gerenciar Jogadores (Exclusivo para Admin no canto superior direito) -->
+    <!-- Botão Flutuante de Gerenciar Jogadores (Exclusivo para Admin - deslocado para a esquerda para não encobrir o Sair) -->
     <button id="btn-gerenciar" style="
         display: none;
         position: absolute;
         top: 20px;
-        right: 30px;
+        right: 140px;
         background: linear-gradient(135deg, #f39c12, #d35400);
         color: #fff;
         border: none;
-        padding: 10px 20px;
+        padding: 10px 18px;
         font-size: 14px;
         font-weight: bold;
         border-radius: 30px;
@@ -36,7 +41,7 @@
     " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.4)';" 
       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.3)';"
       onclick="window.location.href='gerenciar.html'">
-        <i class="fa-solid fa-users-gear" style="margin-right: 6px;"></i> Gerenciar Jogadores
+        <i class="fa-solid fa-users-gear" style="margin-right: 6px;"></i> Gerenciar
     </button>
 
     <div class="container" style="margin-top: 20px;">
@@ -46,7 +51,8 @@
 
         <div class="controls">
             <p>Total de Jogadores Inscritos: <span id="total-jogadores">0</span></p>
-            <button id="btn-sortear">Gerar / Resetar Chaveamento</button>
+            <!-- Botão de Gerar/Resetar Chaveamento (Visível apenas para Admin) -->
+            <button id="btn-sortear" style="display: none;">Gerar / Resetar Chaveamento</button>
         </div>
 
         <!-- O JS insere as colunas das fases aqui dentro lado a lado -->
@@ -115,21 +121,30 @@
 
     <script src="classificacao.js"></script>
     <script>
+        // Função para sair da conta
+        function sairDaConta() {
+            if (confirm("Deseja realmente sair da sua conta?")) {
+                localStorage.removeItem("usuario_perfil");
+                localStorage.removeItem("usuario_logado");
+                window.location.href = "login.html";
+            }
+        }
+
+        // Controle de visibilidade de acordo com o perfil logado
         window.addEventListener('DOMContentLoaded', (event) => {
             const perfil = localStorage.getItem("usuario_perfil");
             
-            // Se for admin, exibe o botão flutuante de gerenciar jogadores
             if (perfil === "admin") {
+                // Exibe os botões exclusivos do Administrador
                 const btnGerenciar = document.getElementById("btn-gerenciar");
-                if (btnGerenciar) {
-                    btnGerenciar.style.display = "block";
-                }
+                if (btnGerenciar) btnGerenciar.style.display = "block";
+
+                const btnSortear = document.getElementById("btn-sortear");
+                if (btnSortear) btnSortear.style.display = "inline-block";
             } else {
-                // Se NÃO for admin, oculta os botões restritos
-                const botoesAdmin = document.querySelectorAll('.btn-admin-gerenciar, .btn-resetar, .btn-avancar-fase'); 
-                botoesAdmin.forEach(botao => {
-                    botao.style.display = 'none';
-                });
+                // Garante que o botão de sortear/gerar chaveamento suma para jogadores comuns
+                const btnSortear = document.getElementById("btn-sortear");
+                if (btnSortear) btnSortear.style.display = "none";
             }
         });
     </script>
