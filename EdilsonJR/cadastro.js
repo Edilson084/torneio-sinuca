@@ -1,5 +1,5 @@
 // ===============================
-// CADASTRO.JS (Atualizado e Blindado)
+// CADASTRO.JS (Atualizado com Forma de Pagamento)
 // ===============================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = document.getElementById("email");
     const senha = document.getElementById("password");
     const confirmarSenha = document.getElementById("confirm-password");
+    const formaPagamento = document.getElementById("forma-pagamento"); // Novo elemento de pagamento
     const formulario = document.querySelector("form");
 
     // ELEMENTOS PARA OCULTAR/EXIBIR SENHA
@@ -85,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const emailValor = email.value.trim();
             const senhaValor = senha.value;
             const confirmarSenhaValor = confirmarSenha.value;
+            const formaPagamentoValor = formaPagamento ? formaPagamento.value : "";
 
             // VALIDAÇÕES
             if (nomeValor === "") {
@@ -123,6 +125,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
+            if (formaPagamentoValor === "") {
+                alert("Selecione a forma de pagamento.");
+                formaPagamento.focus();
+                return;
+            }
+
             let jogadores = JSON.parse(localStorage.getItem("jogadores")) || [];
             const cpfSemMascara = cpfValor.replace(/\D/g, "");
 
@@ -150,16 +158,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 vitorias: 0,
                 derrotas: 0,
                 jogos: 0,
-                pago: false // Controle de pagamento pendente
+                formaPagamento: formaPagamentoValor, // Salva se foi pix ou dinheiro
+                pago: false // Controle de pagamento pendente para o Admin aprovar
             };
 
             jogadores.push(novoJogador);
             localStorage.setItem("jogadores", JSON.stringify(jogadores));
 
-            alert("Cadastro realizado com sucesso! Redirecionando para o pagamento da taxa.");
+            if (formaPagamentoValor === "pix") {
+                alert("Cadastro realizado! Copie a chave Pix informada na tela e avise a administração com o comprovante.");
+            } else {
+                alert("Cadastro realizado! Dirija-se até a administração para efetuar o pagamento em dinheiro.");
+            }
 
-            // REDIRECIONAR PARA O PAGAMENTO
-            window.location.href = "pagamento.html";
-        });
+            // REDIRECIONAR PARA A CLASSIFICAÇÃO
+window.location.href = "classificacao.html";
     }
 });

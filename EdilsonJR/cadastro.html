@@ -70,6 +70,19 @@
                     </div>
                 </div>
 
+                <!-- FORMA DE PAGAMENTO -->
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="forma-pagamento" style="display: block; margin-bottom: 8px; font-weight: bold;">Forma de Pagamento:</label>
+                    <select id="forma-pagamento" name="forma_pagamento" class="form-control" onchange="mostrarInstrucoesPagamento()" required style="width: 100%; padding: 10px; border-radius: 8px; background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.3);">
+                        <option value="" style="color: black;">Selecione a forma de pagamento...</option>
+                        <option value="pix" style="color: black;">Pix</option>
+                        <option value="dinheiro" style="color: black;">Dinheiro</option>
+                    </select>
+                </div>
+
+                <!-- ÁREA DINÂMICA DE INSTRUÇÕES DE PAGAMENTO -->
+                <div id="instrucoes-pagamento" style="margin-bottom: 20px;"></div>
+
                 <!-- BOTÃO -->
                 <button type="submit" class="register-button">Cadastrar</button>
 
@@ -83,7 +96,51 @@
         
     </div>
 
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT LOCAL PARA O PAGAMENTO -->
+    <script>
+        // Chave Pix fixa da administração (substitua pela sua chave real caso precise)
+        const CHAVE_PIX_FIXA = "c266aaf7-bb22-4c55-adf9-7735117b509d"; 
+
+        function mostrarInstrucoesPagamento() {
+            const select = document.getElementById("forma-pagamento");
+            const container = document.getElementById("instrucoes-pagamento");
+            
+            if (select.value === "dinheiro") {
+                container.innerHTML = `
+                    <div style="background: rgba(255, 193, 7, 0.2); border: 1px solid #ffc107; padding: 15px; border-radius: 8px; color: #fff;">
+                        <strong>💵 Pagamento em Dinheiro:</strong><br>
+                        Por favor, dirija-se até a administração para efetuar o pagamento e validar a sua inscrição.
+                    </div>
+                `;
+            } else if (select.value === "pix") {
+                container.innerHTML = `
+                    <div style="background: rgba(0, 191, 99, 0.2); border: 1px solid #00bf63; padding: 15px; border-radius: 8px; color: #fff;">
+                        <strong>📱 Pagamento via Pix:</strong><br>
+                        Copie a chave Pix abaixo para realizar a transferência:<br>
+                        <div style="display: flex; gap: 10px; margin-top: 8px; align-items: center;">
+                            <input type="text" id="input-chave-pix" value="${CHAVE_PIX_FIXA}" readonly style="width: 100%; padding: 8px; border-radius: 5px; border: none; background: rgba(0,0,0,0.5); color: #fff;">
+                            <button type="button" onclick="copiarChavePix()" style="padding: 8px 12px; background: #00bf63; border: none; color: white; border-radius: 5px; cursor: pointer; font-weight: bold;">Copiar</button>
+                        </div>
+                        <p style="margin-top: 10px; font-size: 13px; color: #ddd;">
+                            Assim que efetuar o pagamento, informe a administração com o comprovante em mãos para liberar seu acesso.
+                        </p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = "";
+            }
+        }
+
+        function copiarChavePix() {
+            const inputPix = document.getElementById("input-chave-pix");
+            inputPix.select();
+            inputPix.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(inputPix.value);
+            alert("Chave Pix copiada com sucesso!");
+        }
+    </script>
+
+    <!-- JAVASCRIPT PRINCIPAL -->
     <script src="cadastro.js"></script>
 
 </body>
